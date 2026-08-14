@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+// Abstract parent class for all theme park attractions
+
 public abstract class Attraction{
     private String id;
     private String name;
@@ -13,6 +15,9 @@ public abstract class Attraction{
     protected List<Visitor> visitHistory;
 
     private int cycleCount;
+
+    // Creates a new attraction.
+
 
     public Attraction(String id, String name, int capacityPerCycle, Staff operator) {
         setId(id);
@@ -66,6 +71,9 @@ public abstract class Attraction{
         this.capacityPerCycle = capacityPerCycle;
     }
 
+    // Assigns a staff member as the attraction operator.
+
+
     public void assignOperator(Staff operator) {
         if (operator == null) {
             throw new IllegalArgumentException("Operator cannot be null.");
@@ -74,6 +82,9 @@ public abstract class Attraction{
 
         System.out.println("Operator " + operator.getName() + " assigned to attraction " + name + ".");
     }
+
+    // Removes the current attraction operator.
+
 
     public void removeOperator() {
         if (operator == null) {
@@ -84,11 +95,20 @@ public abstract class Attraction{
         this.operator = null;
     }
 
+    // Increases the number of completed cycles.
+    
+    // This method is available to subclasses.
+
     protected void incrementCycleCount() {
         cycleCount++;
     }
 
+    // Each attraction type supplies its own rule for running a cycle.
+
+
     public abstract void runCycle();
+
+    // Displays the basic attraction information.
 
     @Override
     public String toString() {
