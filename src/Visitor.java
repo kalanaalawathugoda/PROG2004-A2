@@ -1,3 +1,5 @@
+// Represent a visitor who enters the theme park.
+
 public class Visitor implements Comparable<Visitor> {
 
     private String id;
@@ -6,47 +8,88 @@ public class Visitor implements Comparable<Visitor> {
     private String ticketType;
 
     public Visitor(String id, String name, int age, String ticketType) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.ticketType = ticketType;
+        setId(id);
+        setName(name);
+        setAge(age);
+        setTicketType(ticketType);
     }
 
-    // Getters and setters
+    public Visitor(String id, String name, int age) {
+        this(id, name, age, "Standard");
+    }
+
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getTicketType() {
         return ticketType;
     }
 
+    public void setId(String id) {
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException("ID cannot be null or empty.");
+        }
+
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
+
+        this.age = age;
+    }
+
     public void setTicketType(String ticketType) {
+        if (ticketType == null || ticketType.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ticket type cannot be null or empty.");
+        }
+
         this.ticketType = ticketType;
     }
 
     @Override
     public int compareTo(Visitor other) {
-        return this.id.compareTo(other.id);
+        return Integer.compare(this.age, other.age);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+       if (!(object instanceof Visitor)) {
+            return false;
+        }
+        Visitor other = (Visitor) object;
+        return this.id.equals(other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Visitor{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", ticketType='" + ticketType + '\'' +
+                '}';
     }
 }
