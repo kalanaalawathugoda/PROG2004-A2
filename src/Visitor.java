@@ -66,10 +66,15 @@ public class Visitor implements Comparable<Visitor> {
         this.ticketType = ticketType;
     }
 
+// Orders visitors by age
+
     @Override
     public int compareTo(Visitor other) {
         return Integer.compare(this.age, other.age);
     }
+
+
+    //  Visitors are considered equal when their IDs match.
 
     @Override
     public boolean equals(Object object) {
@@ -82,6 +87,16 @@ public class Visitor implements Comparable<Visitor> {
         Visitor other = (Visitor) object;
         return this.id.equals(other.id);
     }
+
+    // Generates a hash code from the visitor ID.
+
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    // Returns all visitor information in readable form
 
     @Override
     public String toString() {
