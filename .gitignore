@@ -1,0 +1,5 @@
+*.class
+.vscode/
+.DS_Store
+park_backup.txt
+corrupted_backup.txt
