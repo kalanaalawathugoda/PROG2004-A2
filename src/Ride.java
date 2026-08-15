@@ -1,12 +1,18 @@
+// Represents a ride in the theme park.
+
 public class Ride extends Attraction implements Inspectable{
     private boolean closed;
     private String lastInspectionResult;
+
+    // Creates a new ride
 
     public Ride(String id, String name, int capacityPerCycle, Staff operator) {
         super(id, name, capacityPerCycle, operator);
         this.closed = false;
         this.lastInspectionResult = "No inspections yet.";
     }
+
+    // Runs one ride cycle.
 
     @Override
     public void runCycle(){
@@ -46,16 +52,22 @@ public class Ride extends Attraction implements Inspectable{
         );
     }
 
+    // Returns the name used for inspection messages.
+
     @Override
     public String getInspectionName() {
         return getName();
     }
+
+    // Starts an inspection and closes the ride.
 
     @Override
     public void startInspection() {
         closed = true;
         System.out.println(getName() + " is now closed for inspection.");
     }
+
+    // Records the result of an inspection
 
     @Override
     public void recordInspection(String result) {
@@ -68,21 +80,29 @@ public class Ride extends Attraction implements Inspectable{
         System.out.println(getName() + " inspection result recorded: " + lastInspectionResult);
     }
 
+    // Finishes the inspection and reopens the ride.
+
     @Override
     public void finishInspection() {
         closed = false;
         System.out.println(getName() + " is now open after inspection.");
     }
 
+    // Reports whether the ride is closed.
+
     @Override
     public boolean isClosed() {
         return closed;
     }
 
+    // Returns the most recent inspection result.
+
     @Override
     public String getInspectionResult() {
         return lastInspectionResult;
     }
+
+    // Returns ride information.
 
     @Override
     public String toString() {
@@ -96,5 +116,5 @@ public class Ride extends Attraction implements Inspectable{
                 ", lastInspectionResult='" + lastInspectionResult + '\'' +
                 '}';
     }
-    
+
 }
