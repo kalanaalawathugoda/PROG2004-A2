@@ -188,6 +188,10 @@ System.out.println("Cannot add a null visitor to " + name + "'s waiting line.");
         }
     }
 
+    public Queue<Visitor> getWaitingLine() {
+        return new LinkedList<>(waitingLine);
+    }
+
     public List<Visitor> getVisitHistory() {
         return new ArrayList<>(visitHistory);
     }
