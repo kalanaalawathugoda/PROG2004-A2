@@ -188,6 +188,10 @@ System.out.println("Cannot add a null visitor to " + name + "'s waiting line.");
         }
     }
 
+    public List<Visitor> getVisitHistory() {
+        return new ArrayList<>(visitHistory);
+    }
+
     public abstract void runCycle();
 
     // Displays the basic attraction information.
