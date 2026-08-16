@@ -105,6 +105,88 @@ public abstract class Attraction{
 
     // Each attraction type supplies its own rule for running a cycle.
 
+public void addVisitorToWaitingLine(Visitor visitor) {
+        if (visitor == null) {
+System.out.println("Cannot add a null visitor to " + name + "'s waiting line.");
+            return;
+        }
+
+        waitingLine.offer(visitor);
+
+        System.out.println(visitor.getName() + " joined the waiting line for " + name + ".");
+
+    }
+
+    public Visitor removeNextVisitor(){
+        if(waitingLine.isEmpty()){
+            System.out.println("No visitors in the waiting line for " + name + ".");
+            return null;
+        }
+
+        Visitor visitor = waitingLine.poll();
+        System.out.println(visitor.getName() + " has been removed from the waiting line for " + name + ".");
+        return visitor;
+    }
+
+    public void displayWaitingLine(){
+        System.out.println("Waiting line for " + name + ":");
+        if(waitingLine.isEmpty()){
+            System.out.println("No visitors in the waiting line.");
+            return;
+        }
+        for (Visitor visitor : waitingLine) {
+            System.out.println(" - " + visitor.getName());
+        }
+    }
+
+    public void recordVisitorHistory(Visitor visitor){
+        if(visitor == null){
+            System.out.println("Cannot record a null visitor in the history for " + name + ".");
+            return;
+        }
+
+        visitHistory.add(visitor);
+        System.out.println(visitor.getName() + " has been recorded in the visit history for " + name + ".");
+    }
+
+    public boolean isVisitorInHistory(Visitor visitor){
+        boolean found = visitHistory.contains(visitor);
+            
+        System.out.println(
+            visitor.getName() +
+            (found
+                    ? " appears in "
+                    : " does not appear in ") +
+            name + " history."
+    );
+
+    return found;
+    }
+
+    public int getHistoryCount(){
+        System.out.println(name + " has served " + visitHistory.size() + " visitor(s) in total.");
+        return visitHistory.size();
+    }
+
+    public void displayHistory(){
+        System.out.println("Visit history for " + name + ":");
+        if(visitHistory.isEmpty()){
+            System.out.println("No visitors have been served yet.");
+            return;
+        }
+        for (Visitor visitor : visitHistory) {
+            System.out.println(" - " + visitor.getName());
+        }
+    }
+
+    public void displayHistoryByNameAndTicketType(){
+        List<Visitor> sortedHistory = new ArrayList<>(visitHistory);
+        sortedHistory.sort(new VisitorNameTicketComparator());
+        System.out.println("Visit history for " + name + " (sorted by name and ticket type):");
+        for (Visitor visitor : sortedHistory) {
+            System.out.println(" - " + visitor.getName() + " (" + visitor.getTicketType() + ")");
+        }
+    }
 
     public abstract void runCycle();
 
