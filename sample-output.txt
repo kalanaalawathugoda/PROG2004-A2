@@ -1,0 +1,321 @@
+
+===== PART 1 - PEOPLE =====
+Staff{id='1001', name='David', age=32, role='Ride Operator'}
+Visitor{id='2001', name='Emma', age=21, ticketType='Standard'}
+Visitor{id='2002', name='John', age=17, ticketType='Premium'}
+Visitor{id='2003', name='Sarah', age=28, ticketType='VIP'}
+
+Visitors ordered by age:
+Visitor{id='2002', name='John', age=17, ticketType='Premium'}
+Visitor{id='2001', name='Emma', age=21, ticketType='Standard'}
+Visitor{id='2003', name='Sarah', age=28, ticketType='VIP'}
+
+===== PART 2 - ATTRACTIONS =====
+Ride{id='R001', name='Thunder Coaster', capacityPerCycle=3, operator=None, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Show ID: S001
+Name: Magic Show
+Capacity per Cycle: 5
+Operator: None
+Total Cycles Run: 0
+Toilet{id='T001', name='Main Toilet Block', closed=false, lastInspectionResult='No inspections yet.'}
+
+Assigning operator:
+Michael has been assigned to operate Thunder Coaster.
+Ride{id='R001', name='Thunder Coaster', capacityPerCycle=3, operator=Michael, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+
+Removing operator:
+Michael has been removed as operator of Thunder Coaster.
+Ride{id='R001', name='Thunder Coaster', capacityPerCycle=3, operator=None, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+
+Reassigning operator:
+Michael has been assigned to operate Thunder Coaster.
+
+Inspecting the ride:
+Ride closed before inspection: false
+Michael is starting an inspection of Thunder Coaster.
+Thunder Coaster is now closed for inspection.
+Thunder Coaster inspection result recorded: Ride passed technical inspection
+Thunder Coaster is now open after inspection.
+Michael has completed the inspection of Thunder Coaster.
+Ride closed after inspection: false
+Last ride inspection result: Ride passed technical inspection
+
+Inspecting the toilet:
+Toilet closed before inspection: false
+Michael is starting an inspection of Main Toilet Block.
+Main Toilet Block is now closed for inspection.
+Main Toilet Block inspection result recorded: Toilet passed hygiene inspection
+Main Toilet Block is now open after inspection.
+Michael has completed the inspection of Main Toilet Block.
+Toilet closed after inspection: false
+Last toilet inspection result: Toilet passed hygiene inspection
+
+===== PART 3 - WAITING LINE =====
+Michael has been assigned to operate Sky Drop.
+Amelia joined the waiting line for Sky Drop.
+Noah joined the waiting line for Sky Drop.
+Olivia joined the waiting line for Sky Drop.
+
+Waiting line before removing next visitor:
+Waiting line for Sky Drop:
+Visitor{id='2101', name='Amelia', age=24, ticketType='Standard'}
+Visitor{id='2102', name='Noah', age=19, ticketType='Premium'}
+Visitor{id='2103', name='Olivia', age=31, ticketType='VIP'}
+Amelia was removed from the waiting line for Sky Drop.
+
+Next visitor removed: Visitor{id='2101', name='Amelia', age=24, ticketType='Standard'}
+
+Waiting line after removing next visitor:
+Waiting line for Sky Drop:
+Visitor{id='2102', name='Noah', age=19, ticketType='Premium'}
+Visitor{id='2103', name='Olivia', age=31, ticketType='VIP'}
+
+===== PART 4 - VISIT HISTORY =====
+Liam was recorded in the history for River Rapids.
+Ava was recorded in the history for River Rapids.
+Liam was recorded in the history for River Rapids.
+Sophia was recorded in the history for River Rapids.
+
+Checking visitor history:
+Ava appears in River Rapids history.
+Ethan does not appear in River Rapids history.
+
+History count:
+River Rapids has served 4 visit(s).
+
+Original visit history:
+Visit history for River Rapids:
+Visitor{id='2201', name='Liam', age=26, ticketType='Standard'}
+Visitor{id='2202', name='Ava', age=18, ticketType='VIP'}
+Visitor{id='2203', name='Liam', age=34, ticketType='Premium'}
+Visitor{id='2204', name='Sophia', age=22, ticketType='Standard'}
+
+Visit history sorted by age:
+Visit history for River Rapids sorted by age:
+Visitor{id='2202', name='Ava', age=18, ticketType='VIP'}
+Visitor{id='2204', name='Sophia', age=22, ticketType='Standard'}
+Visitor{id='2201', name='Liam', age=26, ticketType='Standard'}
+Visitor{id='2203', name='Liam', age=34, ticketType='Premium'}
+
+Visit history sorted by name and ticket type:
+Visit history for River Rapids sorted by name and ticket type:
+Visitor{id='2202', name='Ava', age=18, ticketType='VIP'}
+Visitor{id='2203', name='Liam', age=34, ticketType='Premium'}
+Visitor{id='2201', name='Liam', age=26, ticketType='Standard'}
+Visitor{id='2204', name='Sophia', age=22, ticketType='Standard'}
+
+===== PART 5 - OPERATING AN ATTRACTION =====
+
+Trying to run ride without an operator:
+Mia joined the waiting line for Dragon Flight.
+Dragon Flight cannot run cycle without an operator.
+
+Assigning operator and adding more visitors:
+Daniel has been assigned to operate Dragon Flight.
+Lucas joined the waiting line for Dragon Flight.
+Grace joined the waiting line for Dragon Flight.
+
+Before ride cycle:
+Waiting line for Dragon Flight:
+Visitor{id='2301', name='Mia', age=20, ticketType='Standard'}
+Visitor{id='2302', name='Lucas', age=27, ticketType='Premium'}
+Visitor{id='2303', name='Grace', age=23, ticketType='VIP'}
+Cycle count: 0
+Dragon Flight is running a cycle.
+Mia has enjoyed the ride on Dragon Flight.
+Lucas has enjoyed the ride on Dragon Flight.
+Dragon Flight completed cycle 1 and served 2 visitor(s).
+
+After ride cycle:
+Waiting line for Dragon Flight:
+Visitor{id='2303', name='Grace', age=23, ticketType='VIP'}
+Visit history for Dragon Flight:
+Visitor{id='2301', name='Mia', age=20, ticketType='Standard'}
+Visitor{id='2302', name='Lucas', age=27, ticketType='Premium'}
+Cycle count: 1
+
+Running ride until queue becomes empty:
+Dragon Flight is running a cycle.
+Grace has enjoyed the ride on Dragon Flight.
+Dragon Flight completed cycle 2 and served 1 visitor(s).
+
+Trying to run ride with empty queue:
+Dragon Flight has no visitors to run a cycle.
+Henry joined the waiting line for Dragon Flight.
+
+Trying to run ride while closed for inspection:
+Dragon Flight is now closed for inspection.
+Dragon Flight is closed and cannot run a cycle.
+Dragon Flight is now open after inspection.
+
+Running ride after inspection:
+Dragon Flight is running a cycle.
+Henry has enjoyed the ride on Dragon Flight.
+Dragon Flight completed cycle 3 and served 1 visitor(s).
+
+----- SHOW DEMONSTRATION -----
+
+Trying to run show without an operator:
+Evening Dance Show cannot run cycle without an operator.
+Daniel has been assigned to operate Evening Dance Show.
+
+Running show with an empty audience:
+Evening Dance Show is running a show cycle.
+Evening Dance Show completed cycle 1 with an empty audience.
+Show cycle count: 1
+Ella joined the waiting line for Evening Dance Show.
+James joined the waiting line for Evening Dance Show.
+
+Running show with visitors:
+Evening Dance Show is running a show cycle.
+Ella has enjoyed the show on Evening Dance Show
+James has enjoyed the show on Evening Dance Show
+Evening Dance Show completed cycle 2 and served 2 visitor(s).
+Visit history for Evening Dance Show:
+Visitor{id='2401', name='Ella', age=25, ticketType='Standard'}
+Visitor{id='2402', name='James', age=32, ticketType='VIP'}
+Show cycle count: 2
+
+===== PART 6 - MANAGING THE PARK =====
+Ocean Racer was registered with ID R005.
+Comedy Show was registered with ID S003.
+Jungle Adventure was registered with ID R006.
+
+Registered attractions:
+Registered attractions:
+Ride{id='R006', name='Jungle Adventure', capacityPerCycle=2, operator=None, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Ride{id='R005', name='Ocean Racer', capacityPerCycle=3, operator=None, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Show ID: S003
+Name: Comedy Show
+Capacity per Cycle: 4
+Operator: None
+Total Cycles Run: 0
+
+Looking up attraction R005:
+Found attraction: Ocean Racer
+Lookup result: Ride{id='R005', name='Ocean Racer', capacityPerCycle=3, operator=None, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Oliver was recorded in the history for Ocean Racer.
+Charlotte was recorded in the history for Ocean Racer.
+Oliver was recorded in the history for Comedy Show.
+William was recorded in the history for Comedy Show.
+Charlotte was recorded in the history for Jungle Adventure.
+
+Visitor counts for individual attractions:
+Visitor counts for all attractions:
+Jungle Adventure served 1 seat(s).
+Ocean Racer served 2 seat(s).
+Comedy Show served 2 seat(s).
+
+Distinct visitor count across the park:
+Distinct visitors served across the park: 3
+
+===== PART 7 - BACKUP AND RESTORE =====
+Sophie has been assigned to operate Mountain Express.
+Sophie has been assigned to operate Music Show.
+Jack joined the waiting line for Mountain Express.
+Emily joined the waiting line for Mountain Express.
+Leo joined the waiting line for Music Show.
+Leo was recorded in the history for Mountain Express.
+Chloe was recorded in the history for Music Show.
+Mountain Express was registered with ID R007.
+Music Show was registered with ID S004.
+
+Original park before backup:
+Registered attractions:
+Ride{id='R007', name='Mountain Express', capacityPerCycle=3, operator=Sophie, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Show ID: S004
+Name: Music Show
+Capacity per Cycle: 5
+Operator: Sophie
+Total Cycles Run: 0
+
+Original ride waiting line:
+Waiting line for Mountain Express:
+Visitor{id='2601', name='Jack', age=21, ticketType='Standard'}
+Visitor{id='2602', name='Emily', age=27, ticketType='VIP'}
+
+Original ride history:
+Visit history for Mountain Express:
+Visitor{id='2603', name='Leo', age=18, ticketType='Premium'}
+
+Saving park...
+Park data successfully saved to park_backup.txt.
+
+Restoring into a new park...
+Mountain Express was registered with ID R007.
+Sophie has been assigned to operate Mountain Express.
+Jack joined the waiting line for Mountain Express.
+Emily joined the waiting line for Mountain Express.
+Leo was recorded in the history for Mountain Express.
+Music Show was registered with ID S004.
+Sophie has been assigned to operate Music Show.
+Leo joined the waiting line for Music Show.
+Chloe was recorded in the history for Music Show.
+Park data successfully restored from park_backup.txt.
+
+Restored attractions:
+Registered attractions:
+Ride{id='R007', name='Mountain Express', capacityPerCycle=3, operator=Sophie, cycleCount=0, closed=false, lastInspectionResult='No inspections yet.'}
+Show ID: S004
+Name: Music Show
+Capacity per Cycle: 5
+Operator: Sophie
+Total Cycles Run: 0
+Found attraction: Mountain Express
+
+Restored ride operator:
+Staff{id='1101', name='Sophie', age=33, role='Ride Operator'}
+
+Restored waiting line:
+Waiting line for Mountain Express:
+Visitor{id='2601', name='Jack', age=21, ticketType='Standard'}
+Visitor{id='2602', name='Emily', age=27, ticketType='VIP'}
+
+Restored history:
+Visit history for Mountain Express:
+Visitor{id='2603', name='Leo', age=18, ticketType='Premium'}
+
+Testing missing backup file:
+Backup file not found: file_that_does_not_exist.txt
+
+Testing corrupted backup file:
+Broken Ride was registered with ID R900.
+Skipping malformed line: THIS|IS|NOT|A|VALID|RECORD
+Skipping malformed line: QUEUE|9999|Test Visitor|notANumber|Standard
+Park data successfully restored from corrupted_backup.txt.
+
+Program continued after corrupted file test.
+
+===== PART 8 - RUNNING THE PARK CONCURRENTLY =====
+Alex has been assigned to operate Speed Racer.
+Alex has been assigned to operate Wild River.
+Alex has been assigned to operate Night Performance.
+Alice joined the waiting line for Speed Racer.
+Ben joined the waiting line for Speed Racer.
+Clara joined the waiting line for Speed Racer.
+Daniel joined the waiting line for Wild River.
+Eva joined the waiting line for Wild River.
+Frank joined the waiting line for Night Performance.
+Georgia joined the waiting line for Night Performance.
+
+Starting attractions concurrently...
+Speed Racer is running a cycle.
+Wild River is running a cycle.
+Night Performance is running a show cycle.
+Daniel has enjoyed the ride on Wild River.
+Alice has enjoyed the ride on Speed Racer.
+Frank has enjoyed the show on Night Performance
+Eva has enjoyed the ride on Wild River.
+Ben has enjoyed the ride on Speed Racer.
+Georgia has enjoyed the show on Night Performance
+Clara has enjoyed the ride on Speed Racer.
+Park-wide total updated to 2.
+Wild River completed cycle 1 and served 2 visitor(s).
+Park-wide total updated to 4.
+Night Performance completed cycle 1 and served 2 visitor(s).
+Park-wide total updated to 7.
+Speed Racer completed cycle 1 and served 3 visitor(s).
+
+All attractions finished running.
+
+Final park-wide visitors served: 7
