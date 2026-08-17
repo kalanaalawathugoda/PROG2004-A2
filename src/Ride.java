@@ -1,13 +1,15 @@
 // Represents a ride in the theme park.
 
-public class Ride extends Attraction implements Inspectable{
+public class Ride extends Attraction implements Inspectable {
+
     private boolean closed;
     private String lastInspectionResult;
 
-    // Creates a new ride
+    // Creates a new ride.
 
-    public Ride(String id, String name, int capacityPerCycle, Staff operator) {
-        super(id, name, capacityPerCycle, operator);
+    public Ride(String id, String name, int capacityPerCycle) {
+        super(id, name, capacityPerCycle);
+
         this.closed = false;
         this.lastInspectionResult = "No inspections yet.";
     }
@@ -15,40 +17,71 @@ public class Ride extends Attraction implements Inspectable{
     // Runs one ride cycle.
 
     @Override
-    public void runCycle(){
-        if(getOperator() == null){
-            System.out.println(getName() +"Cannot run cycle without an operator.");
-            return;
+    public void runCycle() {
 
-        }
-
-        if(closed){
-            System.out.println(getName() + " is closed and cannot run a cycle.");
+        if (getOperator() == null) {
+            System.out.println(
+                    getName() +
+                    " cannot run cycle without an operator."
+            );
             return;
         }
 
-        if(waitingLine.isEmpty()){
-            System.out.println(getName() + " has no visitors to run a cycle.");
+        if (closed) {
+            System.out.println(
+                    getName() +
+                    " is closed and cannot run a cycle."
+            );
             return;
         }
 
-        System.out.println(getName() + " is running a cycle ");
+        if (waitingLine.isEmpty()) {
+            System.out.println(
+                    getName() +
+                    " has no visitors to run a cycle."
+            );
+            return;
+        }
+
+        System.out.println(
+                getName() + " is running a cycle."
+        );
+
         int visitorsServed = 0;
 
-        while(visitorsServed < getCapacityPerCycle() && !waitingLine.isEmpty()){
+        while (
+                visitorsServed < getCapacityPerCycle()
+                        && !waitingLine.isEmpty()
+        ) {
+
             Visitor visitor = waitingLine.poll();
+
             visitHistory.add(visitor);
 
             System.out.println(
-                visitor.getName() + " has enjoyed the ride on " + getName()
+                    visitor.getName() +
+                    " has enjoyed the ride on " +
+                    getName() + "."
             );
+
             visitorsServed++;
         }
+
         incrementCycleCount();
 
-        System.out.println(
-            getName() + " has completed a cycle. Total cycles run: " + getCycleCount() + "visitor(s)" + visitorsServed
+        if (getParkWideCounter() != null) {
+            getParkWideCounter().addVisitors(
+                    visitorsServed
+            );
+        }
 
+        System.out.println(
+                getName() +
+                " completed cycle " +
+                getCycleCount() +
+                " and served " +
+                visitorsServed +
+                " visitor(s)."
         );
     }
 
@@ -63,29 +96,45 @@ public class Ride extends Attraction implements Inspectable{
 
     @Override
     public void startInspection() {
+
         closed = true;
-        System.out.println(getName() + " is now closed for inspection.");
+
+        System.out.println(
+                getName() +
+                " is now closed for inspection."
+        );
     }
 
-    // Records the result of an inspection
+    // Records the result of an inspection.
 
     @Override
     public void recordInspection(String result) {
-        if(result == null || result.trim().isEmpty()){
-            lastInspectionResult = "No results supplied";
+
+        if (result == null || result.trim().isEmpty()) {
+            lastInspectionResult =
+                    "No result supplied";
         } else {
             lastInspectionResult = result;
         }
 
-        System.out.println(getName() + " inspection result recorded: " + lastInspectionResult);
+        System.out.println(
+                getName() +
+                " inspection result recorded: " +
+                lastInspectionResult
+        );
     }
 
     // Finishes the inspection and reopens the ride.
 
     @Override
     public void finishInspection() {
+
         closed = false;
-        System.out.println(getName() + " is now open after inspection.");
+
+        System.out.println(
+                getName() +
+                " is now open after inspection."
+        );
     }
 
     // Reports whether the ride is closed.
@@ -98,7 +147,7 @@ public class Ride extends Attraction implements Inspectable{
     // Returns the most recent inspection result.
 
     @Override
-    public String getInspectionResult() {
+    public String getLastInspectionResult() {
         return lastInspectionResult;
     }
 
@@ -106,15 +155,22 @@ public class Ride extends Attraction implements Inspectable{
 
     @Override
     public String toString() {
+
         return "Ride{" +
                 "id='" + getId() + '\'' +
                 ", name='" + getName() + '\'' +
-                ", capacityPerCycle=" + getCapacityPerCycle() +
-                ", operator=" + (getOperator() != null ? getOperator().getName() : "None") +
-                ", cycleCount=" + getCycleCount() +
-                ", closed=" + closed +
-                ", lastInspectionResult='" + lastInspectionResult + '\'' +
+                ", capacityPerCycle=" +
+                getCapacityPerCycle() +
+                ", operator=" +
+                (getOperator() != null
+                        ? getOperator().getName()
+                        : "None") +
+                ", cycleCount=" +
+                getCycleCount() +
+                ", closed=" +
+                closed +
+                ", lastInspectionResult='" +
+                lastInspectionResult + '\'' +
                 '}';
     }
-
 }

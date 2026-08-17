@@ -29,6 +29,11 @@ public class Show extends Attraction {
             }
             incrementCycleCount();
 
+            if(getParkWideCounter() != null){
+                getParkWideCounter().addVisitors(visitorsServed);
+                
+            }
+
             if(visitorsServed == 0){
                 System.out.println(
                     getName() +
